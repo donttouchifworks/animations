@@ -39,9 +39,9 @@ export default {
 
     const start = () => {
       const to = detectItem()
-      TweenMax.to(slotItem.value, Math.floor(Math.random() * 6) + 1, {
+      TweenMax.to(slotItem.value, (Math.random() * 6) + 1, {
         backgroundPositionY: to.px,
-        ease: "Expo.easeInOut"
+        ease: "Elastic.ease"
       }).then(() => {
         console.log(props.user, to.item)
       });
@@ -57,10 +57,6 @@ export default {
       const px= pxOftimes + localPx + correction
       return {px, item}
     }
-
-    // function createWiningIng(id: number){
-    //
-    // }
     async function createImage() {
       images.value = Array<images>()
       let height = 0;
@@ -73,7 +69,6 @@ export default {
         } else {
           height += imgHeight
         }
-
       })
 
       await mergeImages(images.value, {height: height, width:slots.value.offsetWidth}).then((res) => {finalImg.value = res})
@@ -115,6 +110,17 @@ export default {
     background-origin: border-box;
     background-repeat-x: no-repeat;
     background-position-y: 90px;
+    &:before{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      content: "";
+      background-repeat: no-repeat;
+      background-position: center;
+      color: red;
+    }
   }
 }
 img{
